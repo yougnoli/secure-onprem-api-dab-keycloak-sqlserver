@@ -115,7 +115,3 @@ X-MS-API-ROLE: reader
 ```
 
 ---
-
-## Credits
-
-Article & Implementation: [Alessio Tugnoli](https://medium.com/@alessiotugnoli)
