@@ -1,0 +1,67 @@
+{
+  "$schema": "https://github.com/Azure/data-api-builder/releases/download/v1.2.10/dab.draft.schema.json",
+  "data-source": {
+    "database-type": "mssql",
+    "connection-string": "@env('SQL_CONNECTION_STRING')",
+    "options": {
+      "set-session-context": true
+    }
+  },
+  "runtime": {
+    "rest": {
+      "enabled": true,
+      "path": "/api",
+      "request-body-strict": true
+    },
+    "graphql": {
+      "enabled": true,
+      "path": "/graphql",
+      "allow-introspection": true
+    },
+    "host": {
+      "cors": {
+        "origins": ["*"],
+        "allow-credentials": false
+      },
+      "authentication": {
+        "provider": "AzureAD",
+        "jwt": {
+          "audience": "account",
+          "issuer": "https://localhost:8443/realms/TestDAB"
+        }
+      },
+      "mode": "development"
+    }
+  },
+  "entities": {
+    "Orders": {
+      "source": {
+        "object": "dbo.Orders",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Order",
+          "plural": "Orders"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "reader",
+          "actions": [
+            {
+              "action": "read",
+              "policy": {
+                "database": "@item.privacyLevel lt @claims.privacy"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
