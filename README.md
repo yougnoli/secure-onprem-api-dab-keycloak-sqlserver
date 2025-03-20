@@ -8,6 +8,9 @@ This repository contains all the configuration files, SQL scripts, and Docker se
 
 The setup includes Role-Based Access Control (RBAC), Attribute-Based Access Control (ABAC), and Row-Level Security (RLS), providing a scalable, secure solution without cloud dependencies.
 
+📄 **Full detailed guide available on Medium:**  
+[Secure On-Premises API with Data API Builder, Keycloak, and SQL Server](https://medium.com/p/8d9fbed2871e)
+
 ---
 
 ## Requirements
