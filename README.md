@@ -53,7 +53,7 @@ sqlcmd -S localhost -U sa -P YOUR_PASSWORD -i setup.sql
 
 ### 2. Generate SSL Certificates
 
-If you want to regenerate your self-signed certificate, use:
+To generate your self-signed certificate, use:
 
 ```bash
 cd openssl/
